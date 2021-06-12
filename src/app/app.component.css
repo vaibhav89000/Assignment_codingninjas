@@ -20,3 +20,19 @@ a:hover {
   border-radius: 50%;
   margin: 1px;
 }
+
+.noevent{
+font-weight: 100;
+text-align: center;
+font-size: 60px;
+margin-top: 162px;
+}
+
+a{
+  text-decoration: none;
+}
+
+.card{
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}

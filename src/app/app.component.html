@@ -6,14 +6,17 @@
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category':'ALL_EVENTS','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
+       role="tab" aria-controls="">All Events</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category':'WEBINAR','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
+       role="tab" aria-controls="">Webinars</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
       [routerLink]="[]" [queryParams]="{'event_category':'CODING_EVENT','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
       role="tab" aria-controls="">Coding Events</a>
       <a class="nav-item nav-link" id="" data-toggle="tab"
       [routerLink]="[]" [queryParams]="{'event_category':'BOOTCAMP_EVENT','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
       role="tab" aria-controls="">Bootcamp Events</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab"
-      [routerLink]="[]" [queryParams]="{'event_category':'WEBINAR','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
-       role="tab" aria-controls="">Webinars</a>
       <a class="nav-item nav-link" id="" data-toggle="tab" role="tab"
       [routerLink]="[]" [queryParams]="{'event_category':'WORKSHOP','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
        aria-controls="">Workshops</a>
@@ -37,10 +40,10 @@
     <!-- content col -->
     <div class="col-9">
 
-      <div class="row mt-5">
+      <div class="row mt-5" *ngIf="results?.length!==0">
         <div class="col-6" *ngFor="let card of results">
 
-          <div class="card mb-3">
+          <div class="card cardcss mb-3">
             <img class="card-img-top" [src]="card.cover_picture" alt="Card image cap">
             <div class="card-body">
               <h5 class="card-title">{{card.name}}</h5>
@@ -81,6 +84,10 @@
         </div>
       </div>
 
+      <div class="row mt-5" *ngIf="results?.length===0">
+        <p class="noevent">No events found</p>
+      </div>
+
     </div>
 
     <!-- tags col -->
@@ -89,7 +96,8 @@
       <h3>Tags</h3>
       <div class="tagscontainer">
         <div *ngFor="let tag of tags">
-          {{tag}}
+          <a [routerLink]="[]" 
+          [queryParams]="{'event_category': eventCategory,'event_sub_category': eventSubCategory,'tag_list':'','offset':'0'}" >{{tag}}</a> 
         </div>
       </div>
 
