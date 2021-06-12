@@ -101,14 +101,37 @@ export class AppComponent implements OnInit {
     this.results = data['events'];
   }
 
-  // change(){
-  //   console.log('clicked');
-  //   this.router.navigate([],{
-  //     queryParams: {
-  //       'search': 'check',
-  //       'searchby': 'check'
-  //     }
-  //   })
-  // }
+
+  tagadd(tag) {
+    // console.log('tag added', tag);
+
+    // if atleast one tag -> add or remove
+    // else add
+    if (this.tagList !== '') {
+      let previousTags = this.tagList.split(',');
+      // if already exist in query -> remove
+      // else add it
+      if (previousTags.includes(tag)) {
+        let index = previousTags.indexOf(tag);
+        previousTags.splice(index, 1);
+        this.tagList = previousTags.join(",");
+      }
+      else {
+        this.tagList = this.tagList + ',' + tag;
+      }
+    }
+    else {
+      this.tagList = tag;
+    }
+    this.router.navigate([], {
+      queryParams: {
+        'event_category': this.eventCategory,
+        'event_sub_category': this.eventSubCategory,
+        'tag_list': this.tagList,
+        'offset': '0'
+      }
+    })
+  }
+
 
 }
