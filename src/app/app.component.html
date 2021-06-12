@@ -55,7 +55,10 @@
               </div>
             </ul>
             <div class="card-body">
-              <!-- future work need to add users -->
+              <span *ngFor="let user of card?.registered_users?.top_users">
+                <img [src]="user.image_url" onerror="this.src='../assets/person.png';" alt="Avatar" class="avatar">
+              </span> <br>
+              <label>and {{card.registered_users.other_users_count}} others registered</label>
             </div>
           </div>
 
