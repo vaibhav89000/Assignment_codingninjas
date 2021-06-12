@@ -1,17 +1,33 @@
+
+<!-- <button (click)="change()">click</button> -->
 <div class="container mt-5">
 
   <!-- nav bar -->
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Coding Events</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Bootcamp Events</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Webinars</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Workshops</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category':'CODING_EVENT','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
+      role="tab" aria-controls="">Coding Events</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category':'BOOTCAMP_EVENT','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
+      role="tab" aria-controls="">Bootcamp Events</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category':'WEBINAR','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
+       role="tab" aria-controls="">Webinars</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab"
+      [routerLink]="[]" [queryParams]="{'event_category':'WORKSHOP','event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
+       aria-controls="">Workshops</a>
     </div>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab">Upcoming</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab">Archived</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab">All Time Favorites</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category': eventCategory,'event_sub_category':'Upcoming','tag_list':'','offset':'0'}" 
+       role="tab">Upcoming</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category': eventCategory,'event_sub_category':'Archived','tag_list':'','offset':'0'}" 
+      role="tab">Archived</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab"
+      [routerLink]="[]" [queryParams]="{'event_category': eventCategory,'event_sub_category':'All Time Favorites','tag_list':'','offset':'0'}" 
+       role="tab">All Time Favorites</a>
     </div>
   </nav>
 

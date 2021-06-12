@@ -14,12 +14,12 @@ export class CommonserviceService {
   }
 
   // Get request to get data of events
-  getData(){
+  getData(body){
     let params = new HttpParams();
-    params = params.append('event_category', "ALL_EVENTS");
-    params = params.append('event_sub_category', "Archived");
-    params = params.append('tag_list', "Interview Preparation");
-    params = params.append('offset', "0");
+    params = params.append('event_category', body.event_category);
+    params = params.append('event_sub_category', body.event_sub_category);
+    params = params.append('tag_list', body.tag_list);
+    params = params.append('offset', body.offset);
 
     return this.http.get('https://api.codingninjas.com/api/v3/events', { params: params });
   }
