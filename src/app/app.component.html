@@ -4,30 +4,30 @@
   <!-- nav bar -->
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="ALL_EVENTS" data-toggle="tab" [routerLink]="[]"
         [queryParams]="{'event_category':'ALL_EVENTS','event_sub_category':'Upcoming','tag_list':'','offset':'0'}"
         role="tab" aria-controls="">All Events</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="WEBINAR" data-toggle="tab" [routerLink]="[]"
         [queryParams]="{'event_category':'WEBINAR','event_sub_category':'Upcoming','tag_list':'','offset':'0'}"
         role="tab" aria-controls="">Webinars</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="CODING_EVENT" data-toggle="tab" [routerLink]="[]"
         [queryParams]="{'event_category':'CODING_EVENT','event_sub_category':'Upcoming','tag_list':'','offset':'0'}"
         role="tab" aria-controls="">Coding Events</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="BOOTCAMP_EVENT" data-toggle="tab" [routerLink]="[]"
         [queryParams]="{'event_category':'BOOTCAMP_EVENT','event_sub_category':'Upcoming','tag_list':'','offset':'0'}"
         role="tab" aria-controls="">Bootcamp Events</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="WORKSHOP" data-toggle="tab" role="tab" [routerLink]="[]"
         [queryParams]="{'event_category':'WORKSHOP','event_sub_category':'Upcoming','tag_list':'','offset':'0'}"
         aria-controls="">Workshops</a>
     </div>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="Upcoming" data-toggle="tab" [routerLink]="[]"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'Upcoming','tag_list':'','offset':'0'}"
         role="tab">Upcoming</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="Archived" data-toggle="tab" [routerLink]="[]"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'Archived','tag_list':'','offset':'0'}"
         role="tab">Archived</a>
-      <a class="nav-item nav-link" id="" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link" id="All Time Favorites" data-toggle="tab" [routerLink]="[]"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'All Time Favorites','tag_list':'','offset':'0'}"
         role="tab">All Time Favorites</a>
     </div>
@@ -95,7 +95,7 @@
       <h3>Tags</h3>
       <div class="tagscontainer">
         <div *ngFor="let tag of tags">
-          <a (click)="tagadd(tag)">{{tag}}</a>
+          <a [id]="tag" (click)="tagadd(tag)">{{tag}}</a>
         </div>
       </div>
 

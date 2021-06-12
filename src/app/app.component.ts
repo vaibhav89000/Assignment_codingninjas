@@ -27,8 +27,12 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
 
+    // let ele = document.getElementById('ALL_EVENTS');
+    // console.log('check',document.getElementById('ALL_EVENTS'));
+    // document.getElementById('ALL_EVENTS').style.backgroundColor = 'red';
+
     this.route.queryParams.subscribe(params => {
-      console.log('params', params);
+      // console.log('params', params);
       this.eventCategory = params.event_category;
       this.eventSubCategory = params.event_sub_category;
       this.tagList = params.tag_list;
@@ -38,34 +42,36 @@ export class AppComponent implements OnInit {
       // console.log(this.tagList);
       // console.log(this.offSet);
 
+      // if (this.eventCategory !== undefined) {
+      //   let parameters = [this.eventCategory, this.eventSubCategory];
+      //   let tagsarray = this.tagList.split(',');
+      //   for (let tagof of tagsarray) {
+      //     if (tagof !== '') {
+      //       parameters.push(tagof);
+      //     }
+      //   }
+      //   // console.log(parameters);
+      //   for (let doc of parameters) {
+      //     let ele = document.getElementById(doc);
+      //     if (ele != null) {
+      //       ele.style.backgroundColor = 'red';
+      //     }
+      //   }
+      // }
+
       var AlleventCategory = ["CODING_EVENT", "WEBINAR", "BOOTCAMP_EVENT", "WORKSHOP", "ALL_EVENTS"];
       var check_eventCategory = AlleventCategory.includes(this.eventCategory);
 
       if (!check_eventCategory) {
         this.router.navigate([], {
           queryParams: {
-            'event_category': 'CODING_EVENT',
+            'event_category': 'ALL_EVENTS',
             'event_sub_category': 'Upcoming',
             'tag_list': '',
             'offset': '0'
           }
         })
       }
-
-      // <<<-not needed now but may be use later->>>
-      // var AlleventSubCategory = ["‘Upcoming’", "‘Archived’", "All Time Favorites"];
-      // var check_eventSubCategory = AlleventSubCategory.includes(this.eventSubCategory);
-
-      // if (!check_eventSubCategory) {
-      //   this.router.navigate([], {
-      //     queryParams: {
-      //       'event_category': this.eventCategory,
-      //       'event_sub_category': 'Upcoming',
-      //       'tag_list': '',
-      //       'offset': '0'
-      //     }
-      //   })
-      // }
 
       let body = {
         'event_category': this.eventCategory,
@@ -135,3 +141,20 @@ export class AppComponent implements OnInit {
 
 
 }
+
+
+
+// <<<-not needed now but may be use later->>>
+      // var AlleventSubCategory = ["‘Upcoming’", "‘Archived’", "All Time Favorites"];
+      // var check_eventSubCategory = AlleventSubCategory.includes(this.eventSubCategory);
+
+      // if (!check_eventSubCategory) {
+      //   this.router.navigate([], {
+      //     queryParams: {
+      //       'event_category': this.eventCategory,
+      //       'event_sub_category': 'Upcoming',
+      //       'tag_list': '',
+      //       'offset': '0'
+      //     }
+      //   })
+      // }
