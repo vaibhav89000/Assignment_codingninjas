@@ -1,25 +1,85 @@
 <div class="container mt-5">
+
+  <!-- nav bar -->
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true">Coding Events</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab"  role="tab" aria-controls="nav-profile" aria-selected="false">Bootcamp Events</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"  role="tab" aria-controls="nav-contact" aria-selected="false">Webinars</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab"  role="tab" aria-controls="nav-contact" aria-selected="false">Workshops</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Coding Events</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Bootcamp Events</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Webinars</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab" aria-controls="">Workshops</a>
     </div>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="nav-home-tab" data-toggle="tab"  role="tab" aria-controls="nav-home" aria-selected="true">Upcoming</a>
-      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" role="tab" aria-controls="nav-profile" aria-selected="false">Archived</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" role="tab" aria-controls="nav-contact" aria-selected="false">All Time Favorites</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab">Upcoming</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab">Archived</a>
+      <a class="nav-item nav-link" id="" data-toggle="tab" role="tab">All Time Favorites</a>
     </div>
   </nav>
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+
+  <!-- content row -->
+  <div class="row">
+
+    <!-- content col -->
+    <div class="col-9">
+
+      <div class="row mt-5">
+        <div class="col-6" *ngFor="let card of results">
+
+          <div class="card mb-3">
+            <img class="card-img-top" [src]="card.cover_picture" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">{{card.name}}</h5>
+              <div class="row">
+                <div class="col">
+                  <label>Starts on</label> <br>
+                  {{card.event_start_time}}
+                </div>
+                <div class="col">
+                  <label>Entry Fee</label> <br>
+                  <label *ngIf="card.fees===0;else elseblock">Free</label>
+                  <ng-template #elseblock>
+                    <label>{{card.fees}}</label>
+                  </ng-template>
+                </div>
+                <div class="col">
+                  <label>Venue</label> <br>
+                  {{card.venue}}
+                </div>
+              </div>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">{{card.short_desc}}</li>
+              <div class="tagscontainer">
+                <div *ngFor="let tag of card.card_tags">
+                  {{tag}}
+                </div>
+              </div>
+            </ul>
+            <div class="card-body">
+              <!-- future work need to add users -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- tags col -->
+    <div class="col-3 mt-5">
+
+      <h3>Tags</h3>
+      <div class="tagscontainer">
+        <div *ngFor="let tag of tags">
+          {{tag}}
+        </div>
+      </div>
+
+    </div>
+
   </div>
 
 </div>
 
-
+<!-- For Ref -->
 <!-- ‘Coding Events’, ‘Bootcamp Events’, ‘Webinars’ and ‘Workshops’ -->
 <!-- ‘Upcoming’, ‘Archived’ and ‘All Time Favorites’.  -->

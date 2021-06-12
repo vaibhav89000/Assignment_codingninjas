@@ -2,3 +2,13 @@
 a:hover {
     cursor:pointer;
    }
+
+.tagscontainer > div {
+    background-color: #eeeeee;
+    margin: 10px;
+}
+
+.tagscontainer{
+    display: flex;  
+  flex-wrap: wrap;
+}

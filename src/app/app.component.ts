@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { CommonserviceService } from './services/commonservice.service';
 
 @Component({
   selector: 'app-root',
@@ -9,28 +10,36 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 export class AppComponent implements OnInit {
   title = 'assignment';
 
-  constructor(private http: HttpClient) { }
+  tags: any = [];
+  results: any;
+  constructor(private http: HttpClient,
+    private commonservice:CommonserviceService) { }
 
   ngOnInit() {
 
-    let body = {
-      "event_category": "ALL_EVENTS",
-      "event_sub_category": "Archived",
-      "tag_list": "Interview Preparation",
-      "offset": "20"
-    }
+    // call for tags
+    this.commonservice.getTags().subscribe((res)=>{
+      let data = res['data'];
+      this.tags = data['tags'];
+      // console.log(data['tags']);
+    },(err)=>{
+      console.log(err);
+    })
 
-    let params = new HttpParams();
-    params = params.append('event_category', "ALL_EVENTS");
-    params = params.append('event_sub_category', "Archived");
-    params = params.append('tag_list', "Interview Preparation");
-    params = params.append('offset', "20");
-
-    this.http.get('https://api.codingninjas.com/api/v3/events', { params: params }).subscribe((res) => {
-      console.log(res['data']);
+    // call for content
+    this.commonservice.getData().subscribe((res) => {
+      // console.log(res['data']);
+      this.patchValue(res['data']);
     }, (err) => {
       console.log(err);
     })
+  }
+
+
+  // setting values in cards
+  patchValue(data){
+    console.log('data',data['events']);
+    this.results = data['events'];
   }
 
 
