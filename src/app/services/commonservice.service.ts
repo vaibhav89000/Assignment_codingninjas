@@ -19,7 +19,7 @@ export class CommonserviceService {
     params = params.append('event_category', body.event_category);
     params = params.append('event_sub_category', body.event_sub_category);
     params = params.append('tag_list', body.tag_list);
-    params = params.append('offset', body.offset);
+    params = params.append('offset', ((parseInt(body.page)-1)*20).toString());
 
     return this.http.get('https://api.codingninjas.com/api/v3/events', { params: params });
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CommonserviceService } from './services/commonservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
-
+const FILTER_PAG_REGEX = /[^0-9]/g;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,8 +17,11 @@ export class AppComponent implements OnInit {
   eventCategory: any;
   eventSubCategory: any;
   tagList: any;
-  offSet: any;
+  page: any;
 
+  currpage = 1;
+  noOfpage = 1;
+  collectionSize = this.noOfpage * 20;
 
   constructor(private http: HttpClient,
     private commonservice: CommonserviceService,
@@ -31,7 +34,7 @@ export class AppComponent implements OnInit {
       this.eventCategory = params.event_category;
       this.eventSubCategory = params.event_sub_category;
       this.tagList = params.tag_list;
-      this.offSet = params.offset;
+      this.page = params.page;
 
       var AlleventCategory = ["CODING_EVENT", "WEBINAR", "BOOTCAMP_EVENT", "WORKSHOP", "ALL_EVENTS"];
       var check_eventCategory = AlleventCategory.includes(this.eventCategory);
@@ -42,7 +45,7 @@ export class AppComponent implements OnInit {
             'event_category': 'ALL_EVENTS',
             'event_sub_category': 'Upcoming',
             'tag_list': '',
-            'offset': '0'
+            'page': '1'
           }
         })
       }
@@ -51,7 +54,7 @@ export class AppComponent implements OnInit {
         'event_category': this.eventCategory,
         'event_sub_category': this.eventSubCategory,
         'tag_list': this.tagList,
-        'offset': this.offSet
+        'page': this.page
       }
 
       // call for content
@@ -75,8 +78,9 @@ export class AppComponent implements OnInit {
 
   // setting values in cards
   patchValue(data) {
-    // console.log('data', data['events']);
     this.results = data['events'];
+    this.noOfpage = data['page_count'];
+    this.collectionSize = this.noOfpage * 20;
   }
 
   tagadd(tag) {
@@ -105,7 +109,7 @@ export class AppComponent implements OnInit {
         'event_category': this.eventCategory,
         'event_sub_category': this.eventSubCategory,
         'tag_list': this.tagList,
-        'offset': '0'
+        'page': '1'
       }
     })
   }
@@ -125,6 +129,32 @@ export class AppComponent implements OnInit {
     return false;
   }
 
+  selectPage(page: string) {
+    this.router.navigate([], {
+      queryParams: {
+        'event_category': this.eventCategory,
+        'event_sub_category': this.eventSubCategory,
+        'tag_list': this.tagList,
+        'page': page
+      }
+    })
+  }
+
+  formatInput(input: HTMLInputElement) {
+    input.value = input.value.replace(FILTER_PAG_REGEX, '');
+  }
+
+  refreshpage() {
+    this.router.navigate([], {
+      queryParams: {
+        'event_category': this.eventCategory,
+        'event_sub_category': this.eventSubCategory,
+        'tag_list': this.tagList,
+        'page': this.currpage
+      }
+    })
+  }
+
 }
 
 
@@ -139,7 +169,7 @@ export class AppComponent implements OnInit {
       //       'event_category': this.eventCategory,
       //       'event_sub_category': 'Upcoming',
       //       'tag_list': '',
-      //       'offset': '0'
+      //       'page': '0'
       //     }
       //   })
       // }
