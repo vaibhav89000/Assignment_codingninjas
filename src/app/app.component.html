@@ -75,9 +75,10 @@
             <ul class="list-group list-group-flush" style="list-style:none;">
               <li class="list-group-item shortdesc">{{card.short_desc}}</li>
             </ul>
-            <div class="tagscontainer" *ngIf="card.card_tags.length!==0">
-              <div *ngFor="let tag of card.card_tags">
-                {{tag}}
+            <div class="tagscard" *ngIf="card.card_tags.length!==0">
+              <div class="nav nav-tabs tagsclass" *ngFor="let tag of card.card_tags">
+                 <!-- {{tag}} -->
+                 <a class="nav-item tagcard" >{{tag}}</a>
               </div>
             </div>
             <div class="tagscontainer" *ngIf="card.card_tags.length===0">

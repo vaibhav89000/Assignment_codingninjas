@@ -98,3 +98,23 @@ a{
 .coursename{
   min-height: 50px;
 }
+
+.tagscard > div {
+  background-color: #eeeeee;
+  margin: 10px;
+}
+
+.tagscard > p {
+margin: 10px;
+}
+
+.tagscard{
+  display: flex;  
+  flex-wrap: wrap;
+  border-bottom: 1px solid #eeeeee;
+  min-height: 47px;
+}
+
+.tagcard{
+  padding: 3px 8px;
+}
