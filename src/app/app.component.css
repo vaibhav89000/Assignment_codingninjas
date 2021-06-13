@@ -9,12 +9,17 @@ a:hover {
 .tagscontainer > div {
     background-color: #eeeeee;
     margin: 10px;
-    /* border: 10px; */
+}
+
+.tagscontainer > p {
+  margin: 10px;
 }
 
 .tagscontainer{
     display: flex;  
     flex-wrap: wrap;
+    border-bottom: 1px solid #eeeeee;
+    min-height: 47px;
 }
 
 .avatar {
@@ -63,4 +68,33 @@ a{
 
 .cardcss{
   min-height: 400px;
+}
+
+.shortdesc{
+  height: 75px;
+  font-size: 14px;
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.cardinfo{
+  min-height: 180px;
+}
+
+.card-img-top{
+  min-height: 152px;
+  max-height: 160px;
+}
+
+.eventheading{
+  font-size: 15px;
+  color: #a19b9b;
+}
+
+.coursename{
+  min-height: 50px;
 }

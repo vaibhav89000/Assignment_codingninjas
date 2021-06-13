@@ -101,7 +101,7 @@ export class AppComponent implements OnInit {
       var h = dt.getHours(), m = dt.getMinutes();
       var _time = (h > 12) ? (h - 12 + ':' + m + ' PM') : (h + ':' + m + ' AM');
 
-      ele.event_start_time = _time+','+dd + " " + mm + " " + yy;
+      ele.event_start_time = _time + ',' + dd + " " + mm + " " + yy;
       return ele;
     })
   }

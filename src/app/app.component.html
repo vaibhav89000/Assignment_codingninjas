@@ -1,5 +1,6 @@
 <div class="container mt-5">
   <nav>
+    <!-- eventCategory -->
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="ALL_EVENTS" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('ALL_EVENTS')"
@@ -22,6 +23,7 @@
         [queryParams]="{'event_category':'WORKSHOP','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         aria-controls="">Workshops</a>
     </div>
+    <!-- eventSubCategory -->
     <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="Upcoming" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('Upcoming')"
@@ -48,35 +50,39 @@
         <div class="col-md-6 col-sm-12" *ngFor="let card of results">
 
           <div class="card cardcss mb-3">
-            <img class="card-img-top" [src]="card.cover_picture" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">{{card.name}}</h5>
+            <img class="card-img-top" [src]="card.cover_picture" onerror="this.src='../assets/person.jpeg';"
+              alt="Card image cap">
+            <div class="card-body cardinfo">
+              <h5 class="card-title coursename">{{card.name}}</h5>
               <div class="row">
                 <div class="col">
-                  <label>Starts on</label> <br>
+                  <label class="eventheading">Starts on</label> <br>
                   {{card.event_start_time}}
                 </div>
                 <div class="col">
-                  <label>Entry Fee</label> <br>
+                  <label class="eventheading">Entry Fee</label> <br>
                   <label *ngIf="card.fees===0;else elseblock">Free</label>
                   <ng-template #elseblock>
-                    <label>INR {{card.fees}}</label>
+                    INR {{card.fees}}
                   </ng-template>
                 </div>
                 <div class="col">
-                  <label>Venue</label> <br>
+                  <label class="eventheading">Venue</label> <br>
                   {{card.venue}}
                 </div>
               </div>
             </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{card.short_desc}}</li>
-              <div class="tagscontainer">
-                <div *ngFor="let tag of card.card_tags">
-                  {{tag}}
-                </div>
-              </div>
+            <ul class="list-group list-group-flush" style="list-style:none;">
+              <li class="list-group-item shortdesc">{{card.short_desc}}</li>
             </ul>
+            <div class="tagscontainer" *ngIf="card.card_tags.length!==0">
+              <div *ngFor="let tag of card.card_tags">
+                {{tag}}
+              </div>
+            </div>
+            <div class="tagscontainer" *ngIf="card.card_tags.length===0">
+              <p>No tag</p>
+            </div>
             <div class="card-body">
               <span *ngFor="let user of card?.registered_users?.top_users">
                 <img [src]="user.image_url" onerror="this.src='../assets/person.png';" alt="Avatar" class="avatar">
@@ -121,6 +127,7 @@
     <!-- tags col -->
     <div class="col-md-3 mt-5">
 
+      <!-- tagList -->
       <h3>Tags</h3>
       <div class="tagscontainer">
         <div class="nav nav-tabs tagsclass" *ngFor="let tag of tags">
