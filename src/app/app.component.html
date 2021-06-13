@@ -44,10 +44,10 @@
   <div class="row">
 
     <!-- content col -->
-    <div class="col-9">
+    <div class="col-md-9 col-sm-12">
 
       <div class="row mt-5" *ngIf="results?.length!==0">
-        <div class="col-6" *ngFor="let card of results">
+        <div class="col-md-6 col-sm-12" *ngFor="let card of results">
 
           <div class="card cardcss mb-3">
             <img class="card-img-top" [src]="card.cover_picture" alt="Card image cap">
@@ -94,10 +94,32 @@
         <p class="noevent">No events found</p>
       </div>
 
+      <!-- pagination -->
+      <span style="float: right;">
+        <!-- <div class="col pagenav"> -->
+        <ngb-pagination [collectionSize]="collectionSize" [(page)]="currpage" [pageSize]="20" [boundaryLinks]="true"
+          (pageChange)="refreshpage()">
+          <ng-template ngbPaginationPages>
+            <li class="ngb-custom-pages-item">
+              <div class="form-group d-flex flex-nowrap px-2">
+                <label id="paginationInputLabel" for="paginationInput" class="col-form-label mr-2 ml-1">Page</label>
+                <input #i type="text" inputmode="numeric" pattern="[0-9]*" class="form-control custom-pages-input"
+                  id="paginationInput" [value]="currpage" (keyup.enter)="selectPage(i.value)"
+                  (blur)="selectPage(i.value)" (input)="formatInput($any($event).target)"
+                  aria-labelledby="paginationInputLabel paginationDescription" style="width: 2.5rem" />
+                <span id="paginationDescription" class="col-form-label text-nowrap px-2">
+                  of {{noOfpage}}</span>
+              </div>
+            </li>
+          </ng-template>
+        </ngb-pagination>
+        <!-- </div> -->
+      </span>
+
     </div>
 
     <!-- tags col -->
-    <div class="col-3 mt-5">
+    <div class="col-md-3 mt-5">
 
       <h3>Tags</h3>
       <div class="tagscontainer">
@@ -111,23 +133,7 @@
 
   </div>
 
-  <!-- pagination -->
-  <ngb-pagination [collectionSize]="collectionSize" [(page)]="currpage" [pageSize]="20" [boundaryLinks]="true"
-    (pageChange)="refreshpage()">
-    <ng-template ngbPaginationPages>
-      <li class="ngb-custom-pages-item">
-        <div class="form-group d-flex flex-nowrap px-2">
-          <label id="paginationInputLabel" for="paginationInput" class="col-form-label mr-2 ml-1">Page</label>
-          <input #i type="text" inputmode="numeric" pattern="[0-9]*" class="form-control custom-pages-input"
-            id="paginationInput" [value]="currpage" (keyup.enter)="selectPage(i.value)" (blur)="selectPage(i.value)"
-            (input)="formatInput($any($event).target)" aria-labelledby="paginationInputLabel paginationDescription"
-            style="width: 2.5rem" />
-          <span id="paginationDescription" class="col-form-label text-nowrap px-2">
-            of {{noOfpage}}</span>
-        </div>
-      </li>
-    </ng-template>
-  </ngb-pagination>
+
   <hr>
 
 </div>
