@@ -26,38 +26,12 @@ export class AppComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-
-    // let ele = document.getElementById('ALL_EVENTS');
-    // console.log('check',document.getElementById('ALL_EVENTS'));
-    // document.getElementById('ALL_EVENTS').style.backgroundColor = 'red';
-
     this.route.queryParams.subscribe(params => {
       // console.log('params', params);
       this.eventCategory = params.event_category;
       this.eventSubCategory = params.event_sub_category;
       this.tagList = params.tag_list;
       this.offSet = params.offset;
-      // console.log(this.eventCategory);
-      // console.log(this.eventSubCategory);
-      // console.log(this.tagList);
-      // console.log(this.offSet);
-
-      // if (this.eventCategory !== undefined) {
-      //   let parameters = [this.eventCategory, this.eventSubCategory];
-      //   let tagsarray = this.tagList.split(',');
-      //   for (let tagof of tagsarray) {
-      //     if (tagof !== '') {
-      //       parameters.push(tagof);
-      //     }
-      //   }
-      //   // console.log(parameters);
-      //   for (let doc of parameters) {
-      //     let ele = document.getElementById(doc);
-      //     if (ele != null) {
-      //       ele.style.backgroundColor = 'red';
-      //     }
-      //   }
-      // }
 
       var AlleventCategory = ["CODING_EVENT", "WEBINAR", "BOOTCAMP_EVENT", "WORKSHOP", "ALL_EVENTS"];
       var check_eventCategory = AlleventCategory.includes(this.eventCategory);
@@ -97,16 +71,13 @@ export class AppComponent implements OnInit {
     }, (err) => {
       console.log(err);
     })
-
   }
-
 
   // setting values in cards
   patchValue(data) {
     // console.log('data', data['events']);
     this.results = data['events'];
   }
-
 
   tagadd(tag) {
     // console.log('tag added', tag);
@@ -139,6 +110,20 @@ export class AppComponent implements OnInit {
     })
   }
 
+  // Check for active nav
+  // if present true else return false
+  isLinkActive(tag): Boolean {
+    if (this.tagList !== undefined && this.tagList.includes(tag)) {
+      return true;
+    }
+    if (this.eventCategory !== undefined && this.eventCategory.includes(tag)) {
+      return true;
+    }
+    if (this.eventSubCategory !== undefined && this.eventSubCategory.includes(tag)) {
+      return true;
+    }
+    return false;
+  }
 
 }
 
