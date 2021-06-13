@@ -1,6 +1,4 @@
 <div class="container mt-5">
-
-  <!-- nav bar -->
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="ALL_EVENTS" data-toggle="tab" [routerLink]="[]"
@@ -24,7 +22,7 @@
         [queryParams]="{'event_category':'WORKSHOP','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         aria-controls="">Workshops</a>
     </div>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
       <a class="nav-item nav-link" id="Upcoming" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('Upcoming')"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'Upcoming','tag_list':'','page':'1'}"
@@ -84,6 +82,10 @@
                 <img [src]="user.image_url" onerror="this.src='../assets/person.png';" alt="Avatar" class="avatar">
               </span> <br>
               <label>and {{card.registered_users.other_users_count}} others registered</label>
+
+              <button *ngIf="eventSubCategory==='Upcoming'" type="button" class="btn registerbtn">
+                Register Now
+              </button>
             </div>
           </div>
 
@@ -95,8 +97,7 @@
       </div>
 
       <!-- pagination -->
-      <span style="float: right;">
-        <!-- <div class="col pagenav"> -->
+      <span style="float: right;" *ngIf="results?.length!==0">
         <ngb-pagination [collectionSize]="collectionSize" [(page)]="currpage" [pageSize]="20" [boundaryLinks]="true"
           (pageChange)="refreshpage()">
           <ng-template ngbPaginationPages>
@@ -106,14 +107,13 @@
                 <input #i type="text" inputmode="numeric" pattern="[0-9]*" class="form-control custom-pages-input"
                   id="paginationInput" [value]="currpage" (keyup.enter)="selectPage(i.value)"
                   (blur)="selectPage(i.value)" (input)="formatInput($any($event).target)"
-                  aria-labelledby="paginationInputLabel paginationDescription" style="width: 2.5rem" />
+                  aria-labelledby="paginationInputLabel paginationDescription" style="width: 3.5rem" />
                 <span id="paginationDescription" class="col-form-label text-nowrap px-2">
                   of {{noOfpage}}</span>
               </div>
             </li>
           </ng-template>
         </ngb-pagination>
-        <!-- </div> -->
       </span>
 
     </div>

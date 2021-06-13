@@ -1,3 +1,7 @@
+.container{
+  border: 2px solid #eeeeee;
+}
+
 a:hover {
     cursor:pointer;
    }
@@ -10,7 +14,7 @@ a:hover {
 
 .tagscontainer{
     display: flex;  
-  flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 .avatar {
@@ -22,10 +26,10 @@ a:hover {
 }
 
 .noevent{
-font-weight: 100;
-text-align: center;
-font-size: 60px;
-margin-top: 162px;
+  font-weight: 100;
+  text-align: center;
+  font-size: 60px;
+  margin-top: 162px;
 }
 
 a{
@@ -47,6 +51,16 @@ a{
 }
 
 .activetag{
-background-color: #fa7328 !important;
-color: white;
+  background-color: #fa7328 !important;
+  color: white;
+}
+
+.registerbtn{
+  background-color: #fc9d69 !important;
+  color: white;
+  float: right;
+}
+
+.cardcss{
+  min-height: 400px;
 }

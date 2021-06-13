@@ -23,6 +23,13 @@ export class AppComponent implements OnInit {
   noOfpage = 1;
   collectionSize = this.noOfpage * 20;
 
+  months = [
+    "Jan", "Feb",
+    "Mar", "Apr", "May",
+    "June", "July", "Aug",
+    "Sep", "Oct",
+    "Nov", "Dec"
+  ];
   constructor(private http: HttpClient,
     private commonservice: CommonserviceService,
     private router: Router,
@@ -78,9 +85,25 @@ export class AppComponent implements OnInit {
 
   // setting values in cards
   patchValue(data) {
-    this.results = data['events'];
+    // this.results = data['events'];
     this.noOfpage = data['page_count'];
     this.collectionSize = this.noOfpage * 20;
+
+    this.results = data['events'].map(ele => {
+      let timestamp = ele.event_start_time;
+      var date = new Date(timestamp);
+      // console.log(timestamp);
+      let dd = date.getDate();
+      let mm = this.months[date.getMonth()];
+      let yy = date.getFullYear();
+
+      var dt = new Date(timestamp);
+      var h = dt.getHours(), m = dt.getMinutes();
+      var _time = (h > 12) ? (h - 12 + ':' + m + ' PM') : (h + ':' + m + ' AM');
+
+      ele.event_start_time = _time+','+dd + " " + mm + " " + yy;
+      return ele;
+    })
   }
 
   tagadd(tag) {
@@ -144,6 +167,7 @@ export class AppComponent implements OnInit {
     input.value = input.value.replace(FILTER_PAG_REGEX, '');
   }
 
+  // on next Page and on previous page
   refreshpage() {
     this.router.navigate([], {
       queryParams: {
