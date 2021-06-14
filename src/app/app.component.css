@@ -150,3 +150,10 @@ margin: 10px;
 .batchsize{
   float: right;
 }
+
+.badgeevent{
+  background-color: #17a2b8;
+  color: white;
+  border-radius: 100px;
+  padding: 2px;
+}

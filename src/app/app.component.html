@@ -57,7 +57,7 @@
         <div class="col-md-6 col-sm-12" *ngFor="let card of results">
 
           <div class="card cardcss mb-3">
-            <img class="card-img-top" [src]="card.mobile_cover_picture" onerror="this.src='../assets/person.jpeg';"
+            <img class="card-img-top" [src]="card.mobile_cover_picture" onerror="this.src='../assets/course.jpg';"
               alt="Card image cap">
             <div class="card-body cardinfo">
               <div class="row" *ngIf="eventCategory==='ALL_EVENTS'">
@@ -86,11 +86,11 @@
               </div>
               <div class="row" *ngIf="card?.seats_left">
                 <div class="col-6">
-                  <span class="badge badge-info"><span style="color: #f3b68d;">{{card.seats_left}}</span> Seats
+                  <span class="badgeevent "><span style="color: #f3b68d;">{{card.seats_left}}</span> Seats
                     Left</span>
                 </div>
                 <div class="col-6">
-                  <span class="badge badge-info batchsize"><span style="color: #f3b68d;">{{card.seats_left +
+                  <span class="badgeevent batchsize"><span style="color: #f3b68d;">{{card.seats_left +
                       card.seats_filled}}</span> Batch Size</span>
                 </div>
               </div>
@@ -138,8 +138,7 @@
                 <label id="paginationInputLabel" for="paginationInput" class="col-form-label mr-2 ml-1">Page</label>
                 <input #i type="text" inputmode="numeric" pattern="[0-9]*" class="form-control custom-pages-input"
                   id="paginationInput" [value]="currpage" (keyup.enter)="selectPage(i.value)"
-                  (blur)="selectPage(i.value)" aria-labelledby="paginationInputLabel paginationDescription"
-                  (keydown)="keyPressNumbers($event)" style="width: 3.5rem" />
+                  aria-labelledby="paginationInputLabel paginationDescription" style="width: 3.5rem" />
                 <span id="paginationDescription" class="col-form-label text-nowrap px-2">
                   of {{noOfpage}}</span>
               </div>
