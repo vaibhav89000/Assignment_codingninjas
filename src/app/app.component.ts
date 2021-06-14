@@ -17,6 +17,15 @@ export class AppComponent implements OnInit {
   results: any;
   isalltags: boolean = false;
 
+
+  badges = {
+    'CODING_EVENT': 'Coding Event',
+    'WEBINAR': 'WEBINAR',
+    'BOOTCAMP_EVENT': 'BOOTCAMP EVENT',
+    'WORKSHOP': 'WORKSHOP',
+    'ALL_EVENTS': 'ALL EVENTS'
+  }
+
   eventCategory: any;
   eventSubCategory: any;
   tagList: any;
@@ -103,6 +112,13 @@ export class AppComponent implements OnInit {
     this.collectionSize = this.noOfpage * 20;
 
     this.results = data['events'].map(ele => {
+      if (ele.event_category in this.badges) {
+        ele.event_category = this.badges[ele.event_category];
+      }
+      else {
+        ele.event_category = 'No Badge';
+      }
+
       // seconds to milliseconds
       let timestamp = ele.event_start_time * 1000;
       var date = new Date(timestamp);

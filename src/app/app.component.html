@@ -1,4 +1,5 @@
 <div class="container mt-5">
+
   <!-- spinner added -->
   <ngx-spinner></ngx-spinner>
   <nav>
@@ -56,9 +57,15 @@
         <div class="col-md-6 col-sm-12" *ngFor="let card of results">
 
           <div class="card cardcss mb-3">
-            <img class="card-img-top" [src]="card.cover_picture" onerror="this.src='../assets/person.jpeg';"
+            <img class="card-img-top" [src]="card.mobile_cover_picture" onerror="this.src='../assets/person.jpeg';"
               alt="Card image cap">
             <div class="card-body cardinfo">
+              <div class="row" *ngIf="eventCategory==='ALL_EVENTS'">
+                <div class="col">
+                  <span style="background-color: #fc9d69;"
+                    class="badge badge-info"><span>{{card.event_category}}</span></span>
+                </div>
+              </div>
               <h5 class="card-title coursename">{{card.name}}</h5>
               <div class="row">
                 <div class="col">
@@ -69,13 +76,25 @@
                   <label class="eventheading">Entry Fee</label> <br>
                   <label class="courseinfo" *ngIf="card.fees===0;else elseblock">Free</label>
                   <ng-template #elseblock>
-                    <label class="courseinfo">INR {{card.fees}}</label>
+                    <label class="courseinfo">{{card.currency}} {{card.fees}}</label>
                   </ng-template>
                 </div>
                 <div class="col">
                   <label class="eventheading">Venue</label> <br>
                   <label class="courseinfo">{{card.venue}}</label>
                 </div>
+              </div>
+              <div class="row" *ngIf="card?.seats_left">
+                <div class="col-6">
+                  <span class="badge badge-info"><span style="color: #f3b68d;">{{card.seats_left}}</span> Seats
+                    Left</span>
+                </div>
+                <div class="col-6">
+                  <span class="badge badge-info batchsize"><span style="color: #f3b68d;">{{card.seats_left +
+                      card.seats_filled}}</span> Batch Size</span>
+                </div>
+              </div>
+              <div>
               </div>
             </div>
             <ul class="list-group list-group-flush" style="list-style:none;">
