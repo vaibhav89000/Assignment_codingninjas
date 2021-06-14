@@ -118,3 +118,15 @@ margin: 10px;
 .tagcard{
   padding: 3px 8px;
 }
+
+.eventCategoryclass{
+  font-size: 20px;
+}
+
+.eventSubCategoryclass{
+  font-size: 15px;
+}
+
+.courseinfo{
+  font-size: 14px;
+}

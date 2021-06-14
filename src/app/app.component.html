@@ -2,38 +2,38 @@
   <nav>
     <!-- eventCategory -->
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="ALL_EVENTS" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventCategoryclass" id="ALL_EVENTS" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('ALL_EVENTS')"
         [queryParams]="{'event_category':'ALL_EVENTS','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         role="tab" aria-controls="">All Events</a>
-      <a class="nav-item nav-link" id="WEBINAR" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventCategoryclass" id="WEBINAR" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('WEBINAR')"
         [queryParams]="{'event_category':'WEBINAR','event_sub_category':'Upcoming','tag_list':'','page':'1'}" role="tab"
         aria-controls="">Webinars</a>
-      <a class="nav-item nav-link" id="CODING_EVENT" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventCategoryclass" id="CODING_EVENT" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('CODING_EVENT')"
         [queryParams]="{'event_category':'CODING_EVENT','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         role="tab" aria-controls="">Coding Events</a>
-      <a class="nav-item nav-link" id="BOOTCAMP_EVENT" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventCategoryclass" id="BOOTCAMP_EVENT" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('BOOTCAMP_EVENT')"
         [queryParams]="{'event_category':'BOOTCAMP_EVENT','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         role="tab" aria-controls="">Bootcamp Events</a>
-      <a class="nav-item nav-link" id="WORKSHOP" data-toggle="tab" role="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventCategoryclass" id="WORKSHOP" data-toggle="tab" role="tab" [routerLink]="[]"
         [class.active]="isLinkActive('WORKSHOP')"
         [queryParams]="{'event_category':'WORKSHOP','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         aria-controls="">Workshops</a>
     </div>
     <!-- eventSubCategory -->
     <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" id="Upcoming" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventSubCategoryclass" id="Upcoming" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('Upcoming')"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         role="tab">Upcoming</a>
-      <a class="nav-item nav-link" id="Archived" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventSubCategoryclass" id="Archived" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('Archived')"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'Archived','tag_list':'','page':'1'}"
         role="tab">Archived</a>
-      <a class="nav-item nav-link" id="All Time Favorites" data-toggle="tab" [routerLink]="[]"
+      <a class="nav-item nav-link eventSubCategoryclass" id="All Time Favorites" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('All Time Favorites')"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'All Time Favorites','tag_list':'','page':'1'}"
         role="tab">All Time Favorites</a>
@@ -57,18 +57,18 @@
               <div class="row">
                 <div class="col">
                   <label class="eventheading">Starts on</label> <br>
-                  {{card.event_start_time}}
+                  <label class="courseinfo" >{{card.event_start_time}}</label>
                 </div>
                 <div class="col">
                   <label class="eventheading">Entry Fee</label> <br>
-                  <label *ngIf="card.fees===0;else elseblock">Free</label>
+                  <label class="courseinfo" *ngIf="card.fees===0;else elseblock">Free</label>
                   <ng-template #elseblock>
-                    INR {{card.fees}}
+                    <label class="courseinfo">INR {{card.fees}}</label> 
                   </ng-template>
                 </div>
                 <div class="col">
                   <label class="eventheading">Venue</label> <br>
-                  {{card.venue}}
+                  <label class="courseinfo">{{card.venue}}</label> 
                 </div>
               </div>
             </div>
