@@ -122,10 +122,13 @@ margin: 10px;
 .eventCategoryclass{
   font-size: 20px;
   color: #a69f9f;
+  margin-right: 52px;
 }
 
 .eventSubCategoryclass{
-  font-size: 15px;
+  font-size: 17px;
+  font-weight: 500;
+  margin-right: 52px;
   color: #a69f9f;
 }
 

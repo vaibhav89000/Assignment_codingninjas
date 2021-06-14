@@ -4,7 +4,7 @@
   <nav>
     <!-- eventCategory -->
     <!-- ‘Coding Events’, ‘Bootcamp Events’, ‘Webinars’ and ‘Workshops’ -->
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <div class="nav nav-tab" style="overflow:auto;flex-wrap: nowrap;" id="nav-tab" role="tablist">
       <a class="nav-item nav-link eventCategoryclass" id="ALL_EVENTS" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('ALL_EVENTS')"
         [queryParams]="{'event_category':'ALL_EVENTS','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
@@ -26,9 +26,10 @@
         [queryParams]="{'event_category':'WORKSHOP','event_sub_category':'Upcoming','tag_list':'','page':'1'}"
         aria-controls=""><i class="fa fa-video-camera" aria-hidden="true"></i> Workshops</a>
     </div>
+    <hr>
     <!-- eventSubCategory -->
     <!-- ‘Upcoming’, ‘Archived’ and ‘All Time Favorites’.  -->
-    <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
+    <div class="nav nav-tab mt-2" style="overflow:auto;flex-wrap: nowrap;" id="nav-tab" role="tablist">
       <a class="nav-item nav-link eventSubCategoryclass" id="Upcoming" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('Upcoming')"
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'Upcoming','tag_list':'','page':'1'}"
@@ -42,6 +43,7 @@
         [queryParams]="{'event_category': eventCategory,'event_sub_category':'All Time Favorites','tag_list':'','page':'1'}"
         role="tab">All Time Favorites</a>
     </div>
+    <hr>
   </nav>
 
   <!-- content row -->
