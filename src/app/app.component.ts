@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
     this.collectionSize = this.noOfpage * 20;
 
     this.results = data['events'].map(ele => {
-      let timestamp = ele.event_start_time;
+      let timestamp = ele.event_start_time * 1000;
       var date = new Date(timestamp);
       // console.log(timestamp);
       let dd = date.getDate();
@@ -106,9 +106,33 @@ export class AppComponent implements OnInit {
       let yy = date.getFullYear();
 
       var dt = new Date(timestamp);
-      var h = dt.getHours(), m = dt.getMinutes();
-      var _time = (h > 12) ? (h - 12 + ':' + m + ' PM') : (h + ':' + m + ' AM');
-
+      var h = dt.getHours(), m = dt.getMinutes().toString();
+      // 24 hrs to 12hrs clock
+      var _time;
+      if (parseInt(m) < 10) {
+        m = '0' + m;
+      }
+      if (h == 0) {
+        _time = '12' + ':' + m + ' AM';
+      }
+      else if (h >= 1 && h < 12) {
+        if (h < 10) {
+          _time = '0' + h + ':' + m + ' AM';
+        }
+        else {
+          _time = h + ':' + m + ' AM';
+        }
+      }
+      else if (h >= 13 && h < 24) {
+        let hr = h - 12;
+        if (hr < 10) {
+          console.log(hr);
+          _time = '0' + hr + ':' + m + ' PM';
+        }
+        else {
+          _time = hr + ':' + m + ' PM';
+        }
+      }
       ele.event_start_time = _time + ',' + dd + " " + mm + " " + yy;
       return ele;
     })
