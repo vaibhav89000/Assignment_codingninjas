@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CommonserviceService } from './services/commonservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
-
+const FILTER_PAG_REGEX = /[^0-9]/g;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -228,16 +228,11 @@ export class AppComponent implements OnInit {
     })
   }
 
-  //keydown
-  keyPressNumbers(event) {
-    var charCode = event.keyCode;
-    // Only Numbers 0-9 and backspace -> 8
-    if ((charCode >= 48 && charCode <= 57) || charCode == 8) {
-      return true;
-    } else {
-      return false;
-    }
+  formatInput(input: HTMLInputElement) {
+    input.value = input.value.replace(FILTER_PAG_REGEX, '');    
   }
+
+
 
   // show more tags
   alltags() {
