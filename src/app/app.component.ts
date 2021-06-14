@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CommonserviceService } from './services/commonservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,8 @@ export class AppComponent implements OnInit {
   constructor(private http: HttpClient,
     private commonservice: CommonserviceService,
     private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
@@ -65,21 +67,27 @@ export class AppComponent implements OnInit {
       }
 
       // call for content
+      this.spinner.show();
       this.commonservice.getData(body).subscribe((res) => {
         // console.log(res['data']);
+        this.spinner.hide();
         this.patchValue(res['data']);
       }, (err) => {
-        console.log(err);
+        // console.log(err);
+        this.spinner.hide();
       })
     });
 
     // call for tags
+    this.spinner.show();
     this.commonservice.getTags().subscribe((res) => {
       let data = res['data'];
       this.tags = data['tags'];
+      this.spinner.hide();
       // console.log(data['tags']);
     }, (err) => {
-      console.log(err);
+      // console.log(err);
+      this.spinner.hide();
     })
   }
 
