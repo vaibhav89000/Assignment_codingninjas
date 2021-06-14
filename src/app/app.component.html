@@ -57,18 +57,18 @@
               <div class="row">
                 <div class="col">
                   <label class="eventheading">Starts on</label> <br>
-                  <label class="courseinfo" >{{card.event_start_time}}</label>
+                  <label class="courseinfo">{{card.event_start_time}}</label>
                 </div>
                 <div class="col">
                   <label class="eventheading">Entry Fee</label> <br>
                   <label class="courseinfo" *ngIf="card.fees===0;else elseblock">Free</label>
                   <ng-template #elseblock>
-                    <label class="courseinfo">INR {{card.fees}}</label> 
+                    <label class="courseinfo">INR {{card.fees}}</label>
                   </ng-template>
                 </div>
                 <div class="col">
                   <label class="eventheading">Venue</label> <br>
-                  <label class="courseinfo">{{card.venue}}</label> 
+                  <label class="courseinfo">{{card.venue}}</label>
                 </div>
               </div>
             </div>
@@ -77,8 +77,8 @@
             </ul>
             <div class="tagscard" *ngIf="card.card_tags.length!==0">
               <div class="nav nav-tabs tagsclass" *ngFor="let tag of card.card_tags">
-                 <!-- {{tag}} -->
-                 <a class="nav-item tagcard" >{{tag}}</a>
+                <!-- {{tag}} -->
+                <a class="nav-item tagcard">{{tag}}</a>
               </div>
             </div>
             <div class="tagscontainer" *ngIf="card.card_tags.length===0">
@@ -113,8 +113,8 @@
                 <label id="paginationInputLabel" for="paginationInput" class="col-form-label mr-2 ml-1">Page</label>
                 <input #i type="text" inputmode="numeric" pattern="[0-9]*" class="form-control custom-pages-input"
                   id="paginationInput" [value]="currpage" (keyup.enter)="selectPage(i.value)"
-                  (blur)="selectPage(i.value)" (input)="formatInput($any($event).target)"
-                  aria-labelledby="paginationInputLabel paginationDescription" style="width: 3.5rem" />
+                  (blur)="selectPage(i.value)" aria-labelledby="paginationInputLabel paginationDescription"
+                  (keydown)="keyPressNumbers($event)" style="width: 3.5rem" />
                 <span id="paginationDescription" class="col-form-label text-nowrap px-2">
                   of {{noOfpage}}</span>
               </div>

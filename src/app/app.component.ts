@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { CommonserviceService } from './services/commonservice.service';
 import { ActivatedRoute, Router } from '@angular/router';
-const FILTER_PAG_REGEX = /[^0-9]/g;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -163,9 +163,7 @@ export class AppComponent implements OnInit {
     })
   }
 
-  formatInput(input: HTMLInputElement) {
-    input.value = input.value.replace(FILTER_PAG_REGEX, '');
-  }
+
 
   // on next Page and on previous page
   refreshpage() {
@@ -177,6 +175,17 @@ export class AppComponent implements OnInit {
         'page': this.currpage
       }
     })
+  }
+
+  //keydown
+  keyPressNumbers(event) {
+    var charCode = event.keyCode;
+    // Only Numbers 0-9 and backspace -> 8
+    if ((charCode >= 48 && charCode <= 57) || charCode == 8) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
 }
