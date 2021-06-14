@@ -132,3 +132,14 @@ margin: 10px;
 .courseinfo{
   font-size: 13px;
 }
+
+.addmoretags{
+  color: #fa7328;
+  font-weight: 601;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.nav-link{
+  padding: 0.2rem 0.5em;
+}

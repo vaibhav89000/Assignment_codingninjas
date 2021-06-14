@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
   title = 'assignment';
 
   tags: any = [];
+  Alltags: any = [];
   results: any;
+  isalltags: boolean = false;
 
   eventCategory: any;
   eventSubCategory: any;
@@ -27,7 +29,7 @@ export class AppComponent implements OnInit {
   months = [
     "Jan", "Feb",
     "Mar", "Apr", "May",
-    "June", "July", "Aug",
+    "Jun", "Jul", "Aug",
     "Sep", "Oct",
     "Nov", "Dec"
   ];
@@ -39,7 +41,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      // console.log('params', params);
+
       this.eventCategory = params.event_category;
       this.eventSubCategory = params.event_sub_category;
       this.tagList = params.tag_list;
@@ -69,7 +71,7 @@ export class AppComponent implements OnInit {
       // call for content
       this.spinner.show();
       this.commonservice.getData(body).subscribe((res) => {
-        // console.log(res['data']);
+
         this.spinner.hide();
         this.patchValue(res['data']);
       }, (err) => {
@@ -78,15 +80,18 @@ export class AppComponent implements OnInit {
       })
     });
 
-    // call for tags
+    // spinner start
     this.spinner.show();
+    // call for tags
     this.commonservice.getTags().subscribe((res) => {
       let data = res['data'];
-      this.tags = data['tags'];
+      this.Alltags = data['tags'];
+      this.tags = this.Alltags.slice(0, 12);
+      // spinner stop
       this.spinner.hide();
-      // console.log(data['tags']);
     }, (err) => {
       // console.log(err);
+      // spinner stop
       this.spinner.hide();
     })
   }
@@ -98,20 +103,23 @@ export class AppComponent implements OnInit {
     this.collectionSize = this.noOfpage * 20;
 
     this.results = data['events'].map(ele => {
+      // seconds to milliseconds
       let timestamp = ele.event_start_time * 1000;
       var date = new Date(timestamp);
-      // console.log(timestamp);
+      // dd/mm/yy
       let dd = date.getDate();
       let mm = this.months[date.getMonth()];
       let yy = date.getFullYear();
 
       var dt = new Date(timestamp);
       var h = dt.getHours(), m = dt.getMinutes().toString();
-      // 24 hrs to 12hrs clock
+
       var _time;
+      // two digit figure check
       if (parseInt(m) < 10) {
         m = '0' + m;
       }
+      // 24 hrs to 12hrs clock
       if (h == 0) {
         _time = '12' + ':' + m + ' AM';
       }
@@ -126,7 +134,6 @@ export class AppComponent implements OnInit {
       else if (h >= 13 && h < 24) {
         let hr = h - 12;
         if (hr < 10) {
-          console.log(hr);
           _time = '0' + hr + ':' + m + ' PM';
         }
         else {
@@ -135,12 +142,10 @@ export class AppComponent implements OnInit {
       }
       ele.event_start_time = _time + ',' + dd + " " + mm + " " + yy;
       return ele;
-    })
+    });
   }
 
   tagadd(tag) {
-    // console.log('tag added', tag);
-
     // if atleast one tag -> add or remove
     // else add
     if (this.tagList !== '') {
@@ -169,7 +174,7 @@ export class AppComponent implements OnInit {
     })
   }
 
-  // Check for active nav
+  // Check for active nav link
   // if present true else return false
   isLinkActive(tag): Boolean {
     if (this.tagList !== undefined && this.tagList.includes(tag)) {
@@ -195,8 +200,6 @@ export class AppComponent implements OnInit {
     })
   }
 
-
-
   // on next Page and on previous page
   refreshpage() {
     this.router.navigate([], {
@@ -220,6 +223,11 @@ export class AppComponent implements OnInit {
     }
   }
 
+  // show more tags
+  alltags() {
+    this.tags = this.Alltags;
+    this.isalltags = true;
+  }
 }
 
 

@@ -3,6 +3,7 @@
   <ngx-spinner></ngx-spinner>
   <nav>
     <!-- eventCategory -->
+    <!-- ‘Coding Events’, ‘Bootcamp Events’, ‘Webinars’ and ‘Workshops’ -->
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a class="nav-item nav-link eventCategoryclass" id="ALL_EVENTS" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('ALL_EVENTS')"
@@ -26,6 +27,7 @@
         aria-controls=""><i class="fa fa-video-camera" aria-hidden="true"></i> Workshops</a>
     </div>
     <!-- eventSubCategory -->
+    <!-- ‘Upcoming’, ‘Archived’ and ‘All Time Favorites’.  -->
     <div class="nav nav-tabs mt-2" id="nav-tab" role="tablist">
       <a class="nav-item nav-link eventSubCategoryclass" id="Upcoming" data-toggle="tab" [routerLink]="[]"
         [class.active]="isLinkActive('Upcoming')"
@@ -100,7 +102,7 @@
 
         </div>
       </div>
-
+      <!-- No events found  -->
       <div class="row mt-5" *ngIf="results?.length===0">
         <p class="noevent">No events found</p>
       </div>
@@ -129,7 +131,6 @@
 
     <!-- tags col -->
     <div class="col-md-3 mt-5">
-
       <!-- tagList -->
       <h3>Tags</h3>
       <div class="tagscontainer">
@@ -138,6 +139,7 @@
             (click)="tagadd(tag)">{{tag}}</a>
         </div>
       </div>
+      <div><a (click)="alltags()" class="addmoretags" *ngIf="!isalltags">see 10 more tags</a></div>
 
     </div>
 
