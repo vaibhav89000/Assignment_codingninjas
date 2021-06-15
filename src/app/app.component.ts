@@ -105,6 +105,55 @@ export class AppComponent implements OnInit {
     })
   }
 
+  // getdate in format
+  getDate(ele_time, type) {
+    // seconds to milliseconds
+    let timestamp = ele_time * 1000;
+    var date = new Date(timestamp);
+    // dd/mm/yy
+    let dd = date.getDate();
+    let mm = this.months[date.getMonth()];
+    let yy = date.getFullYear();
+
+    var dt = new Date(timestamp);
+    var h = dt.getHours(), m = dt.getMinutes().toString();
+
+    var _time;
+    // two digit figure check
+    if (parseInt(m) < 10) {
+      m = '0' + m;
+    }
+    // 24 hrs to 12hrs clock
+    if (h == 0) {
+      _time = '12' + ':' + m + ' AM';
+    }
+    else if (h >= 1 && h < 12) {
+      if (h < 10) {
+        _time = '0' + h + ':' + m + ' AM';
+      }
+      else {
+        _time = h + ':' + m + ' AM';
+      }
+    }
+    else if (h >= 13 && h < 24) {
+      let hr = h - 12;
+      if (hr < 10) {
+        _time = '0' + hr + ':' + m + ' PM';
+      }
+      else {
+        _time = hr + ':' + m + ' PM';
+      }
+    }
+    let timechange;
+    if (type === 'start_time') {
+      timechange = _time + ',' + dd + " " + mm + " " + yy;
+    }
+    else {
+      timechange = dd + " " + mm + "," + " " + _time;
+    }
+    return timechange;
+  }
+
   // setting values in cards
   patchValue(data) {
     // this.results = data['events'];
@@ -119,44 +168,8 @@ export class AppComponent implements OnInit {
         ele.event_category = 'No Badge';
       }
 
-      // seconds to milliseconds
-      let timestamp = ele.event_start_time * 1000;
-      var date = new Date(timestamp);
-      // dd/mm/yy
-      let dd = date.getDate();
-      let mm = this.months[date.getMonth()];
-      let yy = date.getFullYear();
-
-      var dt = new Date(timestamp);
-      var h = dt.getHours(), m = dt.getMinutes().toString();
-
-      var _time;
-      // two digit figure check
-      if (parseInt(m) < 10) {
-        m = '0' + m;
-      }
-      // 24 hrs to 12hrs clock
-      if (h == 0) {
-        _time = '12' + ':' + m + ' AM';
-      }
-      else if (h >= 1 && h < 12) {
-        if (h < 10) {
-          _time = '0' + h + ':' + m + ' AM';
-        }
-        else {
-          _time = h + ':' + m + ' AM';
-        }
-      }
-      else if (h >= 13 && h < 24) {
-        let hr = h - 12;
-        if (hr < 10) {
-          _time = '0' + hr + ':' + m + ' PM';
-        }
-        else {
-          _time = hr + ':' + m + ' PM';
-        }
-      }
-      ele.event_start_time = _time + ',' + dd + " " + mm + " " + yy;
+      ele.event_start_time = this.getDate(ele.event_start_time, 'start_time');
+      ele.registration_end_time = this.getDate(ele.registration_end_time, 'reg_time');
       return ele;
     });
   }
@@ -229,7 +242,7 @@ export class AppComponent implements OnInit {
   }
 
   formatInput(input: HTMLInputElement) {
-    input.value = input.value.replace(FILTER_PAG_REGEX, '');    
+    input.value = input.value.replace(FILTER_PAG_REGEX, '');
   }
 
 

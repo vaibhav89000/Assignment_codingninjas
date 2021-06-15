@@ -157,3 +157,19 @@ margin: 10px;
   border-radius: 100px;
   padding: 2px;
 }
+
+.registrationtag{
+  /* background-color: white;
+  height: 20px;
+  width: 46%;
+  margin-top: -30px;   */
+  margin: auto;
+  /* width: 60%; */
+  /* border: 3px solid #73AD21; */
+  background-color: white;
+  margin-top: -34px;
+  margin-right: 7px;
+  height: 27px;
+}
+
+

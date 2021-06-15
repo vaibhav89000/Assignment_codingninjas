@@ -59,6 +59,10 @@
           <div class="card cardcss mb-3">
             <img class="card-img-top" [src]="card.mobile_cover_picture" onerror="this.src='../assets/course.jpg';"
               alt="Card image cap">
+
+            <div class="registrationtag">
+              <p>Registrations <b>open</b> till <b>{{card.registration_end_time}}</b></p>
+            </div>
             <div class="card-body cardinfo">
               <div class="row" *ngIf="eventCategory==='ALL_EVENTS'">
                 <div class="col">
