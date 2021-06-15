@@ -245,28 +245,9 @@ export class AppComponent implements OnInit {
     input.value = input.value.replace(FILTER_PAG_REGEX, '');
   }
 
-
-
   // show more tags
   alltags() {
     this.tags = this.Alltags;
     this.isalltags = true;
   }
 }
-
-
-
-// <<<-not needed now but may be use later->>>
-      // var AlleventSubCategory = ["‘Upcoming’", "‘Archived’", "All Time Favorites"];
-      // var check_eventSubCategory = AlleventSubCategory.includes(this.eventSubCategory);
-
-      // if (!check_eventSubCategory) {
-      //   this.router.navigate([], {
-      //     queryParams: {
-      //       'event_category': this.eventCategory,
-      //       'event_sub_category': 'Upcoming',
-      //       'tag_list': '',
-      //       'page': '0'
-      //     }
-      //   })
-      // }
