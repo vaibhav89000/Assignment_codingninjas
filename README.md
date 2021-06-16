@@ -1,6 +1,29 @@
 # Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
+API params for events API
+1)	event_category (CODING_EVENT, WEBINAR, BOOTCAMP_EVENT, WORKSHOP, ALL_EVENTS)
+2)	event_sub_category (Upcoming, Archived and All Time Favourites)
+3)	tag_list
+4)	offset 
+Main Page
+1)	Navbar for event category and event subcategory.
+2)	Cards for details information of event.
+3)	Pagination for next and previous page.
+4)	Right most section for Tags.
+5)	Page size of 20 on each page.
+
+Cards
+1)	Mobile profile picture on top of card.
+2)	Event name
+3)	Event Info
+1) Starts on
+2) Entry Fee
+3) Venue
+     4) Short description.
+     5) Tags on that event.
+     6) Registered user
+                           1) Top five user avatar
+		2) Number of remaining users.
 
 ## Development server
 
