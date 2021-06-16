@@ -5,6 +5,7 @@ API params for events API
 2)	event_sub_category (Upcoming, Archived and All Time Favourites)
 3)	tag_list
 4)	offset 
+
 Main Page
 1)	Navbar for event category and event subcategory.
 2)	Cards for details information of event.
