@@ -20,11 +20,11 @@ Cards
 1) Starts on
 2) Entry Fee
 3) Venue
-     4) Short description.
-     5) Tags on that event.
-     6) Registered user
-                           1) Top five user avatar
-		2) Number of remaining users.
+4) Short description.
+5) Tags on that event.
+6) Registered user
+7) Top five user avatar
+8) Number of remaining users.
 
 ## Development server
 
