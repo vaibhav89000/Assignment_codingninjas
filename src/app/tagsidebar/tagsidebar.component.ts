@@ -28,12 +28,12 @@ export class TagsidebarComponent implements OnInit {
     private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-
-      this.eventCategory = params.event_category;
-      this.eventSubCategory = params.event_sub_category;
-      this.tagList = params.tag_list;
-      this.page = params.page;
+    this.commonservice.getparams().subscribe(res => {
+      // console.log(res);
+      this.eventCategory = res.event_category;
+      this.eventSubCategory = res.event_sub_category;
+      this.tagList = res.tag_list;
+      this.page = res.page;
 
       var AlleventCategory = ["CODING_EVENT", "WEBINAR", "BOOTCAMP_EVENT", "WORKSHOP", "ALL_EVENTS"];
       var check_eventCategory = AlleventCategory.includes(this.eventCategory);
@@ -48,6 +48,9 @@ export class TagsidebarComponent implements OnInit {
           }
         })
       }
+
+    }, err => {
+      console.log('err', err);
     });
 
     // spinner start

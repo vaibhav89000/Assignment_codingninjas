@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CommonserviceService } from '../services/commonservice.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,15 +15,16 @@ export class NavbarComponent implements OnInit {
   page: any;
 
   constructor(private router: Router,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private commonservice: CommonserviceService) { }
 
   ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-
-      this.eventCategory = params.event_category;
-      this.eventSubCategory = params.event_sub_category;
-      this.tagList = params.tag_list;
-      this.page = params.page;
+    this.commonservice.getparams().subscribe(res => {
+      // console.log(res);
+      this.eventCategory = res.event_category;
+      this.eventSubCategory = res.event_sub_category;
+      this.tagList = res.tag_list;
+      this.page = res.page;
 
       var AlleventCategory = ["CODING_EVENT", "WEBINAR", "BOOTCAMP_EVENT", "WORKSHOP", "ALL_EVENTS"];
       var check_eventCategory = AlleventCategory.includes(this.eventCategory);
@@ -37,6 +39,9 @@ export class NavbarComponent implements OnInit {
           }
         })
       }
+
+    }, err => {
+      console.log('err', err);
     });
   }
 
