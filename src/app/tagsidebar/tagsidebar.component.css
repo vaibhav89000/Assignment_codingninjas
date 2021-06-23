@@ -1,0 +1,48 @@
+  
+a:hover {
+  cursor:pointer;
+  }
+
+.tagscontainer > div {
+    background-color: #eeeeee;
+    margin: 10px;
+}
+
+.tagscontainer{
+    display: flex;  
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eeeeee;
+    min-height: 47px;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.tagsclass{
+  text-align: center;
+}
+
+.active{
+  color: #fa7328 !important;
+}
+
+.activetag{
+  background-color: #fa7328 !important;
+  color: white;
+}
+
+.addmoretags{
+  color: #fa7328;
+  font-weight: 601;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.nav-link{
+  padding: 0.2rem 0.5em;
+}
+
+
+

@@ -1,0 +1,8 @@
+<h3>Tags</h3>
+<div class="tagscontainer">
+    <div class="nav nav-tabs tagsclass" *ngFor="let tag of tags">
+        <a class="nav-item nav-link " routerLinkActive="active" [class.activetag]="isLinkActive(tag)" [id]="tag"
+            (click)="tagadd(tag)">{{tag}}</a>
+    </div>
+</div>
+<div><a (click)="alltags()" class="addmoretags" *ngIf="!isalltags">see 10 more tags</a></div>

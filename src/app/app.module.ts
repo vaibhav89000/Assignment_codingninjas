@@ -8,9 +8,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { CardComponent } from './card/card.component';
+import { TagsidebarComponent } from './tagsidebar/tagsidebar.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CardComponent,
+    TagsidebarComponent
   ],
   imports: [
     BrowserModule,

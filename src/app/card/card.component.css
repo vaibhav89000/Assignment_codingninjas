@@ -1,0 +1,160 @@
+  
+  a:hover {
+      cursor:pointer;
+     }
+  
+  .tagscontainer > div {
+      background-color: #eeeeee;
+      margin: 10px;
+  }
+  
+  .tagscontainer > p {
+    margin: 10px;
+  }
+  
+  .tagscontainer{
+      display: flex;  
+      flex-wrap: wrap;
+      border-bottom: 1px solid #eeeeee;
+      min-height: 47px;
+  }
+  
+  .avatar {
+    vertical-align: middle;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    margin: 1px;
+  }
+  
+  .noevent{
+    font-weight: 100;
+    text-align: center;
+    font-size: 60px;
+    margin-top: 162px;
+  }
+  
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .card{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  
+  .tagsclass{
+    text-align: center;
+  }
+  
+  .active{
+    color: #fa7328 !important;
+  }
+  
+  .activetag{
+    background-color: #fa7328 !important;
+    color: white;
+  }
+  
+  .registerbtn{
+    background-color: #fc9d69 !important;
+    color: white;
+    float: right;
+  }
+  
+  .cardcss{
+    min-height: 400px;
+  }
+  
+  .shortdesc{
+    height: 75px;
+    font-size: 14px;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  .cardinfo{
+    min-height: 180px;
+  }
+  
+  .card-img-top{
+    min-height: 152px;
+    max-height: 160px;
+  }
+  
+  .eventheading{
+    font-size: 15px;
+    color: #a19b9b;
+  }
+  
+  .coursename{
+    min-height: 50px;
+  }
+  
+  .tagscard > div {
+    background-color: #eeeeee;
+    margin: 10px;
+  }
+  
+  .tagscard > p {
+  margin: 10px;
+  }
+  
+  .tagscard{
+    display: flex;  
+    flex-wrap: wrap;
+    border-bottom: 1px solid #eeeeee;
+    min-height: 47px;
+  }
+  
+  .tagcard{
+    padding: 3px 8px;
+  }
+  
+  .courseinfo{
+    font-size: 13px;
+  }
+  
+  .addmoretags{
+    color: #fa7328;
+    font-weight: 601;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  
+  .nav-link{
+    padding: 0.2rem 0.5em;
+  }
+  
+  .batchsize{
+    float: right;
+  }
+  
+  .badgeevent{
+    background-color: #17a2b8;
+    color: white;
+    border-radius: 100px;
+    padding: 2px;
+  }
+  
+  .registrationtag{
+    /* background-color: white;
+    height: 20px;
+    width: 46%;
+    margin-top: -30px;   */
+    margin: auto;
+    /* width: 60%; */
+    /* border: 3px solid #73AD21; */
+    background-color: white;
+    margin-top: -34px;
+    margin-right: 7px;
+    height: 27px;
+  }
+  
+  
+  
