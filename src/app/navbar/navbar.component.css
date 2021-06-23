@@ -1,0 +1,34 @@
+.container{
+    border: 2px solid #eeeeee;
+  }
+  
+  a:hover {
+      cursor:pointer;
+     }
+  
+  a{
+    text-decoration: none;
+    color: black;
+  }
+  
+  .active{
+    color: #fa7328 !important;
+  }
+  
+  .eventCategoryclass{
+    font-size: 20px;
+    color: #a69f9f;
+    margin-right: 52px;
+  }
+  
+  .eventSubCategoryclass{
+    font-size: 17px;
+    font-weight: 500;
+    margin-right: 52px;
+    color: #a69f9f;
+  }
+  
+  .nav-link{
+    padding: 0.2rem 0.5em;
+  }
+  

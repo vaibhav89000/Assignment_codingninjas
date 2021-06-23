@@ -10,11 +10,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { CardComponent } from './card/card.component';
 import { TagsidebarComponent } from './tagsidebar/tagsidebar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
     CardComponent,
-    TagsidebarComponent
+    TagsidebarComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
