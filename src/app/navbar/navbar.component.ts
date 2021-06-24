@@ -29,6 +29,9 @@ export class NavbarComponent implements OnInit {
       var AlleventCategory = ["CODING_EVENT", "WEBINAR", "BOOTCAMP_EVENT", "WORKSHOP", "ALL_EVENTS"];
       var check_eventCategory = AlleventCategory.includes(this.eventCategory);
 
+      var AlleventSubCategory = ["Upcoming", "Archived", "All Time Favorites"];
+      var check_eventSubCategory = AlleventSubCategory.includes(this.eventSubCategory);
+
       if (!check_eventCategory) {
         this.router.navigate([], {
           queryParams: {
@@ -39,9 +42,56 @@ export class NavbarComponent implements OnInit {
           }
         })
       }
+      else if (!check_eventSubCategory) {
+        this.router.navigate([], {
+          queryParams: {
+            'event_category': this.eventCategory,
+            'event_sub_category': 'Upcoming',
+            'tag_list': '',
+            'page': '1'
+          }
+        })
+      }
+      else if (isNaN(this.page)) {
+        this.router.navigate([], {
+          queryParams: {
+            'event_category': this.eventCategory,
+            'event_sub_category': this.eventSubCategory,
+            'tag_list': this.tagList,
+            'page': '1'
+          }
+        })
+      }
+
+
+      this.commonservice.getTags().subscribe((res) => {
+        let data = res['data'];
+        let tags_array = data['tags'];
+        let array_tagparams = this.tagList.split(',');
+        let tag_exist = true;
+        for (let tag of array_tagparams) {
+          var check_tags = tags_array.includes(tag);
+          if (!check_tags && tag !== '') {
+            tag_exist = false;
+            break;
+          }
+        }
+        if (!tag_exist) {
+          this.router.navigate([], {
+            queryParams: {
+              'event_category': 'ALL_EVENTS',
+              'event_sub_category': 'Upcoming',
+              'tag_list': '',
+              'page': '1'
+            }
+          })
+        }
+      }, (err) => {
+        // console.log(err);
+      })
 
     }, err => {
-      console.log('err', err);
+      // console.log('err', err);
     });
   }
 

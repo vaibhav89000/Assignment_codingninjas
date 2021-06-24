@@ -52,20 +52,6 @@ export class CardComponent implements OnInit {
       this.tagList = res.tag_list;
       this.page = res.page;
 
-      var AlleventCategory = ["CODING_EVENT", "WEBINAR", "BOOTCAMP_EVENT", "WORKSHOP", "ALL_EVENTS"];
-      var check_eventCategory = AlleventCategory.includes(this.eventCategory);
-
-      if (!check_eventCategory) {
-        this.router.navigate([], {
-          queryParams: {
-            'event_category': 'ALL_EVENTS',
-            'event_sub_category': 'Upcoming',
-            'tag_list': '',
-            'page': '1'
-          }
-        })
-      }
-
       let body = {
         'event_category': this.eventCategory,
         'event_sub_category': this.eventSubCategory,
@@ -143,7 +129,7 @@ export class CardComponent implements OnInit {
     // this.results = data['events'];
     this.noOfpage = data['page_count'];
     this.collectionSize = this.noOfpage * 20;
-
+    this.currpage = this.page;
     this.results = data['events'].map(ele => {
       if (ele.event_category in this.badges) {
         ele.event_category = this.badges[ele.event_category];
